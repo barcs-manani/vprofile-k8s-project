@@ -18,5 +18,4 @@ spec:
           service:
             name: vproapp-service
             port: 
-              name: vproapp-svc-port
-              # number: 8080 # Legacy, still works. K8s only uses one at a time
+              number: 8080
