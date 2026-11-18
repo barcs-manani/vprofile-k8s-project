@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vpro-ingress
+  # labels:
+  #   app.kubernetes.io/name: vpro-ingress
+  annotations: # Skeleton
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: vprofile.barcsmanani.online
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: vproapp-service
+            port: 
+              name: vproapp-svc-port
+              # number: 8080 # Legacy, still works. K8s only uses one at a time

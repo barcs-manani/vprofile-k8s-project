@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vpromq01 # Check application.properties file, the port needs to resolve to this service
+  # namespace: default
+spec:
+  type: ClusterIP  # Optional, as ClusterIP is the default type
+  selector:
+    app: vprormq    # Must match the labels on your target Pods
+  ports:
+  - name: vprormq-svc-port
+    protocol: TCP
+    port: 5672              # Port exposed internally by the Service
+    targetPort: vprormq-port # Port the container is actually listening on
